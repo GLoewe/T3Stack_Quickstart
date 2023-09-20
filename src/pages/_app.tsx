@@ -12,9 +12,9 @@ const MyApp: AppType<{ session: Session | null }> = ({
 }) => {
   return (
       <ClerkProvider {...pageProps}>
-        {/*<SessionProvider session={session}>*/}
+        <SessionProvider session={session}>
           <Component {...pageProps} />
-        {/*</SessionProvider>*/}
+        </SessionProvider>
       </ClerkProvider>
   );
 };
