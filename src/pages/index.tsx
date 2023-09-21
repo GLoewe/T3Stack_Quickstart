@@ -3,10 +3,10 @@ import Head from "next/head";
 import Link from "next/link";
 
 import { api } from "~/utils/api";
-import {SignInButton, SignOutButton} from "@clerk/nextjs";
+import {SignInButton, SignOutButton, useUser} from "@clerk/nextjs";
 
 export default function Home() {
-  const hello = api.example.hello.useQuery({ text: "from tRPC" });
+  const { data } = api.player.getAll.useQuery();
 
   return (
     <>
@@ -19,12 +19,13 @@ export default function Home() {
         <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
           <h1 className="text-5xl font-extrabold tracking-tight text-white sm:text-[5rem]">
             Create <span className="text-[hsl(280,100%,70%)]">T4</span> App env var missing test
+            {}
           </h1>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-8">
           </div>
           <div className="flex flex-col items-center gap-2">
             <p className="text-2xl text-white">
-              {hello.data ? hello.data.greeting : "Loading tRPC query..."}
+
             </p>
             <AuthShowcase />
           </div>
@@ -36,6 +37,7 @@ export default function Home() {
 
 function AuthShowcase() {
   const { data: sessionData } = useSession();
+  const user = useUser();
 
   const { data: secretMessage } = api.example.getSecretMessage.useQuery(
     undefined, // no input
@@ -44,8 +46,8 @@ function AuthShowcase() {
 
   return (
     <div className="flex flex-col items-center justify-center gap-4">
-      {!sessionData?.user && <SignInButton/>}
-      {!!sessionData?.user && <SignOutButton/>}
+      {!user.isSignedIn && <SignInButton/>}
+      {user.isSignedIn && <SignOutButton/>}
     </div>
   );
 }

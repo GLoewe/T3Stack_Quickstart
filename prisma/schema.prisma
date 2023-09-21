@@ -14,9 +14,14 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Example {
-  id        Int      @id @default(autoincrement())
+model Player {
+  id        String   @id @default(cuid())
   name      String
+  kills     Int
+  deaths    Int
+  assists   Int
+  rating    Float
+  aim       Int
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 

@@ -3,7 +3,7 @@
  * for Docker builds.
  */
 await import("./src/env.mjs");
-
+const { withAxiom } = require('next-axiom');
 /** @type {import("next").NextConfig} */
 const config = {
   reactStrictMode: true,
@@ -19,4 +19,6 @@ const config = {
   },
 };
 
-export default config;
+module.exports = withAxiom({
+config
+})

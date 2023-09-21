@@ -16,7 +16,8 @@ export const exampleRouter = createTRPCRouter({
     }),
 
   getAll: publicProcedure.query(({ ctx }) => {
-    return ctx.db.example.findMany();
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access,@typescript-eslint/no-unsafe-return
+    return ctx.db.player.findMany();
   }),
 
   getSecretMessage: protectedProcedure.query(() => {
