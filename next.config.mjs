@@ -3,7 +3,6 @@
  * for Docker builds.
  */
 await import("./src/env.mjs");
-import { withAxiom } from "next-axiom";
 
 /** @type {import("next").NextConfig} */
 const config = {
@@ -20,6 +19,4 @@ const config = {
   },
 };
 
-module.exports = withAxiom({
-config
-})
+export default config;
