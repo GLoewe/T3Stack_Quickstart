@@ -36,10 +36,9 @@ export default function Home() {
             test display players stats
               </div>
             <div >
-              {data}
-            {/*{ data?.map((player) => (*/}
-            {/*    <div key={player.id}>{"name: " + player.name}{" kills: " + player.kills}{" deaths: " + player.deaths}</div>*/}
-            {/*))}*/}
+            { data?.map((player) => (
+                <div key={player.id}>{"name: " + player.name}{" kills: " + player.kills}{" deaths: " + player.deaths}</div>
+            ))}
             </div>
           </h1>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-8">
