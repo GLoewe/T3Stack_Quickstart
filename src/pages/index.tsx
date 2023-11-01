@@ -101,6 +101,7 @@ export default function Home() {
                                 {!user.username &&
                                     <div>
                                         <input type={"string"} onChange={handleInputChange}/>
+                                        {/* eslint-disable-next-line @typescript-eslint/no-misused-promises */}
                                         <button style={{padding: "0.5rem"}} type={"button"} onClick={() => updateUser(username)}>Set Username
                                         </button>
                                     </div>
