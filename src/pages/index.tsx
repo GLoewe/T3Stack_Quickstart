@@ -67,13 +67,11 @@ export default function Home() {
 
     if (!user) return null;
 
-    const updateUser = async (name: string) => {
+    const updateUser =  (name: string) => {
         if (name.length > 0 && name.length < 15) {
-            await user.update({
+             void user.update({
                 username: name,
-            }).catch(error => {
-                throw new Error("error")
-            });
+            })
         } else {
             console.log("username must be between 0 and 15 Characters")
         }
@@ -101,7 +99,6 @@ export default function Home() {
                                 {!user.username &&
                                     <div>
                                         <input type={"string"} onChange={handleInputChange}/>
-                                        {/* eslint-disable-next-line @typescript-eslint/no-misused-promises */}
                                         <button style={{padding: "0.5rem"}} type={"button"} onClick={() => updateUser(username)}>Set Username
                                         </button>
                                     </div>
