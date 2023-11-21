@@ -4,15 +4,11 @@ import { useNavigate } from "react-router-dom";
 
 const UpdateUsername:React.FC = () => {
     const [username, setUsername] = useState('');
-    const { user } = useUser(); // Update this based on your user hook
+    const {user} = useUser(); // Update this based on your user hook
     const navigate = useNavigate();
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setUsername(event.target.value);
-    };
-
-    const handleClick = async () => {
-        await updateUser();
     };
 
     const updateUrl = () => {
@@ -28,7 +24,7 @@ const UpdateUsername:React.FC = () => {
                 await user?.update({
                     username: username,
                 });
-                updateUrl();
+                updateUrl(); // assuming updateUrl returns a Promise
                 setUsername("");
             } catch (error) {
                 console.error('Error updating username:', error);
@@ -38,11 +34,15 @@ const UpdateUsername:React.FC = () => {
         }
     };
 
+    const handleClick = async () => {
+        await updateUser();
+    };
+
     return (
         <div>
-            <input type="string" value={username} onChange={handleInputChange} />
+            <input type="string" value={username} onChange={handleInputChange}/>
             <button
-                style={{ padding: '0.5rem' }}
+                style={{padding: '0.5rem'}}
                 type="button"
                 onClick={handleClick}
             >
@@ -50,6 +50,5 @@ const UpdateUsername:React.FC = () => {
             </button>
         </div>
     );
-};
-
+}
 export default UpdateUsername;
