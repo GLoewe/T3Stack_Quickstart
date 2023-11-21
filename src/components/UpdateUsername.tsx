@@ -11,6 +11,10 @@ const UpdateUsername:React.FC = () => {
         setUsername(event.target.value);
     };
 
+    const handleClick = async () => {
+        await updateUser();
+    };
+
     const updateUrl = () => {
         if (user) {
             const newPath = `/user/${username}`;
@@ -24,7 +28,6 @@ const UpdateUsername:React.FC = () => {
                 await user?.update({
                     username: username,
                 });
-                console.log("0")
                 updateUrl();
                 setUsername("");
             } catch (error) {
@@ -41,11 +44,10 @@ const UpdateUsername:React.FC = () => {
             <button
                 style={{ padding: '0.5rem' }}
                 type="button"
-                onClick={() => updateUser()}
+                onClick={handleClick}
             >
                 Change Username
             </button>
-
         </div>
     );
 };
