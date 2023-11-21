@@ -5,18 +5,23 @@ import { useNavigate } from "react-router-dom";
 const UpdateUsername:React.FC = () => {
     const [username, setUsername] = useState('');
     const {user} = useUser(); // Update this based on your user hook
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setUsername(event.target.value);
     };
 
-    const updateUrl = () => {
-        if (user) {
-            const newPath = `/user/${username}`;
-            navigate(newPath);
-        }
+    const handleClick = () => {
+        updateUser();
     };
+
+
+    // const updateUrl = () => {
+    //     if (user) {
+    //         const newPath = `/user/${username}`;
+    //         navigate(newPath);
+    //     }
+    // };
 
     const updateUser = () => {
         if (username.length > 0 && username.length < 15) {
@@ -24,7 +29,7 @@ const UpdateUsername:React.FC = () => {
                 user?.update({
                     username: username,
                 }).catch(err => alert(err));
-                updateUrl(); // assuming updateUrl returns a Promise
+                // updateUrl();
                 setUsername("");
             } catch (error) {
                 console.error('Error updating username:', error);
@@ -32,10 +37,6 @@ const UpdateUsername:React.FC = () => {
         } else {
             console.log('Username must be between 0 and 15 characters');
         }
-    };
-
-    const handleClick = () => {
-        updateUser();
     };
 
     return (

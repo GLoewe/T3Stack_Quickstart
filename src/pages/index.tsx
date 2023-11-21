@@ -40,8 +40,6 @@ const resources = [
             'Next Generation ORM',
         url: 'https://www.prisma.io/',
     },
-
-
     {
         title: 'Tailwind CSS',
         subtitle:
@@ -94,8 +92,8 @@ export default function Home() {
                                 <Link href="https://vercel.com/" target="_blank">
                                     <VercelLogo/>
                                 </Link>
-
                             </div>
+
                             <div className="flex gap-8 justify-center items-center">
                                 <Link href="https://clerk.com/" target="_blank">
                                     <ClerkLogo/>
@@ -107,7 +105,6 @@ export default function Home() {
                                 <Link href="https://tailwindcss.com/" target="_blank">
                                     <TailwindLogo/>
                                 </Link>
-
                             </div>
                         </div>
 
