@@ -51,5 +51,9 @@
   "ct3aMetadata": {
     "initVersion": "7.20.2"
   },
-  "packageManager": "npm@9.3.1"
+  "packageManager": "npm@9.3.1",
+  "resolutions": {
+    "react-router": "6.18.0",
+    "react-router-dom": "6.18.0"
+  }
 }

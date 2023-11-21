@@ -15,7 +15,6 @@ const UpdateUsername:React.FC = () => {
         updateUser();
     };
 
-
     const updateUrl = () => {
         if (user) {
             const newPath = `/user/${username}`;
