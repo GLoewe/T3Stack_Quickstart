@@ -1,5 +1,5 @@
 import { SignOutButton, useUser } from "@clerk/nextjs";
-import React, {useState} from "react";
+import React from "react";
 import Link from "next/link";
 import SupabaseLogo from "~/components/SupabaseLogo";
 import NextJsLogo from "~/components/NextJsLogo";
@@ -51,24 +51,9 @@ const resources = [
 ]
 
 export default function Home() {
-    const [username, setUsername] = useState("");
     const {user, isSignedIn, isLoaded} = useUser();
 
     if (!user) return null;
-
-    const updateUser = (name: string) => {
-        if (name.length > 0 && name.length < 15) {
-            void user.update({
-                username: name,
-            })
-        } else {
-            console.log("username must be between 0 and 15 Characters")
-        }
-    };
-
-    function handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
-        setUsername(event.target.value);
-    }
 
     return (
         <>
@@ -77,25 +62,17 @@ export default function Home() {
                 <div className="w-full flex flex-col items-center">
                     <nav className="w-full flex justify-center border-b border-b-foreground/10 h-16">
                         <div className="w-full max-w-4xl flex justify-between items-center p-3 text-sm text-foreground">
+
                             <div className="flex items-center gap-4">
-                                Hey, {user.username ? user.username : user.id}!
-                                {!user.username &&
-                                    <div>
-                                        <input type={"string"} onChange={handleInputChange}/>
-                                        <button style={{padding: "0.5rem"}} type={"button"}
-                                                onClick={() => updateUser(username)}>Set Username
-                                        </button>
-                                    </div>
-                                }
+                                Hey, {user.username ? user.username : user.id}
                                 <SignOutButton/>
                                 <div className={"justify-end"}>
                                     <Link href={`/user/${user.username}`}>
                                         <span>{`Profile Page`}</span>
-
                                     </Link>
-
                                 </div>
                             </div>
+
                         </div>
                     </nav>
 
@@ -134,8 +111,7 @@ export default function Home() {
                             </div>
                         </div>
 
-                        <div
-                            className="w-full p-[1px] bg-gradient-to-r from-transparent via-foreground/10 to-transparent"/>
+                        <div className="w-full p-[1px] bg-gradient-to-r from-transparent via-foreground/10 to-transparent"/>
 
                         <div className="flex flex-col gap-8 text-foreground">
                             <h2 className="text-lg font-bold text-center">
