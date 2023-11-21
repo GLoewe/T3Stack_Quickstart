@@ -1,6 +1,4 @@
-import Head from "next/head";
-import {api} from "~/utils/api";
-import {SignOutButton, useUser} from "@clerk/nextjs";
+import { SignOutButton, useUser } from "@clerk/nextjs";
 import React, {useState} from "react";
 import Link from "next/link";
 import SupabaseLogo from "~/components/SupabaseLogo";
@@ -9,6 +7,7 @@ import VercelLogo from "~/components/VercelLogo";
 import PrismaLogo from "~/components/PrismaLogo";
 import ClerkLogo from "~/components/ClerkLogo";
 import TailwindLogo from "~/components/TailwindLogo";
+import MoreInfoArrow from "~/components/MoreInfoArrow";
 
 const resources = [
     {
@@ -51,25 +50,15 @@ const resources = [
     },
 ]
 
-const examples = [
-    {type: 'Client Components', src: 'app/_examples/client-component/page.tsx'},
-    {type: 'Server Components', src: 'app/_examples/server-component/page.tsx'},
-    {type: 'Server Actions', src: 'app/_examples/server-action/page.tsx'},
-    {type: 'Route Handlers', src: 'app/_examples/route-handler.ts'},
-]
-
-
 export default function Home() {
     const [username, setUsername] = useState("");
     const {user, isSignedIn, isLoaded} = useUser();
-    // const userId = user?.id;
-    // const heyUser = api.user.hello.useQuery({text: (user?.username) ? user.username : ""});
 
     if (!user) return null;
 
-    const updateUser =  (name: string) => {
+    const updateUser = (name: string) => {
         if (name.length > 0 && name.length < 15) {
-             void user.update({
+            void user.update({
                 username: name,
             })
         } else {
@@ -83,27 +72,29 @@ export default function Home() {
 
     return (
         <>
-            <Head>
-                <title>Prototype T3 App</title>
-                <meta name="T3 Stack Quickstart" content="by Gianluca Löwe"/>
-            </Head>
-
             <main
                 className=" flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c]">
                 <div className="w-full flex flex-col items-center">
                     <nav className="w-full flex justify-center border-b border-b-foreground/10 h-16">
                         <div className="w-full max-w-4xl flex justify-between items-center p-3 text-sm text-foreground">
-
                             <div className="flex items-center gap-4">
                                 Hey, {user.username ? user.username : user.id}!
                                 {!user.username &&
                                     <div>
                                         <input type={"string"} onChange={handleInputChange}/>
-                                        <button style={{padding: "0.5rem"}} type={"button"} onClick={() => updateUser(username)}>Set Username
+                                        <button style={{padding: "0.5rem"}} type={"button"}
+                                                onClick={() => updateUser(username)}>Set Username
                                         </button>
                                     </div>
                                 }
                                 <SignOutButton/>
+                                <div className={"justify-end"}>
+                                    <Link href={`/user/${user.username}`}>
+                                        <span>{`Profile Page`}</span>
+
+                                    </Link>
+
+                                </div>
                             </div>
                         </div>
                     </nav>
@@ -166,36 +157,7 @@ export default function Home() {
                                         </h3>
                                         <div className="flex flex-col grow gap-4 justify-between">
                                             <p className="text-sm opacity-70">{subtitle}</p>
-                                            <div className="flex justify-between items-center">
-                                                <svg
-                                                    width="24"
-                                                    height="24"
-                                                    viewBox="0 0 24 24"
-                                                    fill="none"
-                                                    className="opacity-80 group-hover:opacity-100"
-                                                >
-                                                    <path
-                                                        stroke="blue"
-                                                        strokeWidth="2"
-                                                        strokeLinecap="round"
-                                                        strokeLinejoin="round"
-                                                    />
-                                                </svg>
-
-                                                <svg
-                                                    width="24"
-                                                    height="24"
-                                                    viewBox="0 0 24 24"
-                                                    fill="blue"
-                                                    stroke="blue"
-                                                    strokeWidth="2"
-                                                    strokeLinecap="round"
-                                                    strokeLinejoin="round"
-                                                    className="ml-2 h-4 w-4 opacity-0 -translate-x-2 group-hover:translate-x-0 group-hover:opacity-100 transition-all"
-                                                >
-                                                    <polyline points="9 18 15 12 9 6"/>
-                                                </svg>
-                                            </div>
+                                            <MoreInfoArrow/>
                                         </div>
                                     </a>
                                 ))}
