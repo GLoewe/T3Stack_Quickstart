@@ -18,12 +18,12 @@ const UpdateUsername:React.FC = () => {
         }
     };
 
-    const updateUser = async () => {
+    const updateUser = () => {
         if (username.length > 0 && username.length < 15) {
             try {
-                await user?.update({
+                user?.update({
                     username: username,
-                });
+                }).catch(err => alert(err));
                 updateUrl(); // assuming updateUrl returns a Promise
                 setUsername("");
             } catch (error) {
@@ -34,8 +34,8 @@ const UpdateUsername:React.FC = () => {
         }
     };
 
-    const handleClick = async () => {
-        await updateUser();
+    const handleClick = () => {
+        updateUser();
     };
 
     return (
