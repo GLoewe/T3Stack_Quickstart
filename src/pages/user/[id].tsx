@@ -1,12 +1,11 @@
-import {SignOutButton, useUser} from "@clerk/nextjs";
+import {useUser} from "@clerk/nextjs";
 import React from "react";
-import { BrowserRouter as Router } from 'react-router-dom';
 import UpdateUsername from "~/components/UpdateUsername";
 import Link from "next/link";
 
 export default function Id() {
+    const {user} = useUser();
 
-    const { user, isSignedIn, isLoaded} = useUser();
     return (
         <>
             <main
@@ -15,17 +14,15 @@ export default function Id() {
                 </div>
                 <div>
                     <Link href={`/user/${user?.username}`}>
-                        <Router>
-                            <UpdateUsername/>
-                        </Router>
+                        <UpdateUsername/>
                     </Link>
                 </div>
                 <div>
-                <Link href={"/"}>
-                    <button>
-                        Go Back
-                    </button>
-                </Link>
+                    <Link href={"/"}>
+                        <button>
+                            Go Back
+                        </button>
+                    </Link>
                 </div>
             </main>
         </>

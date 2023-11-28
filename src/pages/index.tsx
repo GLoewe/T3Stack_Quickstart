@@ -1,4 +1,4 @@
-import { SignOutButton, useUser } from "@clerk/nextjs";
+import {SignOutButton, useUser} from "@clerk/nextjs";
 import React from "react";
 import Link from "next/link";
 import SupabaseLogo from "~/components/SupabaseLogo";
@@ -49,7 +49,7 @@ const resources = [
 ]
 
 export default function Home() {
-    const {user, isSignedIn, isLoaded} = useUser();
+    const {user} = useUser();
 
     if (!user) return null;
 
@@ -108,7 +108,8 @@ export default function Home() {
                             </div>
                         </div>
 
-                        <div className="w-full p-[1px] bg-gradient-to-r from-transparent via-foreground/10 to-transparent"/>
+                        <div
+                            className="w-full p-[1px] bg-gradient-to-r from-transparent via-foreground/10 to-transparent"/>
 
                         <div className="flex flex-col gap-8 text-foreground">
                             <h2 className="text-lg font-bold text-center">
