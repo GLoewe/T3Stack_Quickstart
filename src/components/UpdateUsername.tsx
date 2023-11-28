@@ -17,7 +17,6 @@ const UpdateUsername: React.FC = () => {
                 await user?.update({
                     username: username,
                 }).catch(err => alert(err));
-                await router.push("/");
             } catch (error) {
                 console.error('Error updating username:', error);
             }
@@ -26,13 +25,19 @@ const UpdateUsername: React.FC = () => {
         }
     };
 
+    const handleButtonClick = async () => {
+        await updateUser();
+        await router.push("/");
+    };
+
     return (
         <div>
             <input type="string" value={username} onChange={handleInputChange}/>
             <button
                 style={{padding: '0.5rem'}}
                 type="button"
-                onClick={() => updateUser}
+                /* eslint-disable-next-line @typescript-eslint/no-misused-promises */
+                onClick={handleButtonClick}
             >
                 {user?.username ? "Change Username" : "Set Username"}
             </button>
