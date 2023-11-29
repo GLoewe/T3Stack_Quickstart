@@ -9,21 +9,24 @@ export default function Id() {
     return (
         <>
             <main
-                className=" flex min-h-screen flex-col items-center padding-top-5 ">
-                <div> Profile Page
+                className=" flex min-h-screen flex-col items-center p-6 ">
+                <div className={"text-xl"}> Profile Page
                 </div>
-                <div>
+
+                <div className={"p-6"}>
                     <Link href={`/user/${user?.username}`}>
                         <UpdateUsername/>
                     </Link>
                 </div>
-                <div>
+
+                <div >
                     <Link href={"/"}>
                         <button>
                             Go Back
                         </button>
                     </Link>
                 </div>
+
             </main>
         </>
     )

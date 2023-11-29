@@ -56,26 +56,26 @@ export default function Home() {
     return (
         <>
             <main
-                className=" flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c]">
-                <div className="w-full flex flex-col items-center">
-                    <nav className="w-full flex justify-center border-b border-b-foreground/10 h-16">
-                        <div className="w-full max-w-4xl flex justify-between items-center p-3 text-sm text-foreground">
+                className="min-h-screen flex-col items-center justify-center ">
+                <div className="w-full flex flex-col items-center ">
+                    <nav className="w-full flex justify-center border-b border-b-foreground/10">
+                        <div className="w-full flex p-3 text-sm text-foreground bg-gradient-to-b from-[#172554] to-[#1f2937] justify-center ">
 
-                            <div className="flex items-center gap-4">
+                            <div className="flex items-center gap-8">
                                 Hey, {user.username ? user.username : user.id}
-                                <SignOutButton/>
-                                <div className={"justify-end"}>
+                                <div>
                                     <Link href={`/user/${user.username}`}>
                                         <span>{`Profile Page`}</span>
                                     </Link>
                                 </div>
+                                <SignOutButton/>
                             </div>
 
                         </div>
                     </nav>
 
                     <div
-                        className="animate-in flex flex-col gap-14 opacity-0 max-w-4xl px-3 py-16 lg:py-24 text-foreground">
+                        className=" animate-in flex flex-col gap-14 opacity-0 max-w-4xl px-3 py-16 lg:py-24 text-foreground">
                         <h1 className="sr-only">Supabase and Next.js Starter Template</h1>
                         <p className="text-3xl lg:text-5xl !leading-tight mx-auto max-w-xl text-center my-12">
                             Integrated Technologies
@@ -115,12 +115,11 @@ export default function Home() {
                             <h2 className="text-lg font-bold text-center">
                                 Everything you need to get started
                             </h2>
-                            <div style={{backgroundColor: "black"}} className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+                            <div  className="grid grid-cols-1 lg:grid-cols-3 gap-4">
                                 {resources.map(({title, subtitle, url}) => (
                                     <a
-                                        style={{backgroundColor: "#2e1065"}}
                                         key={title}
-                                        className="relative flex flex-col group rounded-lg border p-6 hover:border-foreground"
+                                        className="bg-gradient-to-b from-[#2e026d] to-[#15162c] relative flex flex-col group rounded-lg border p-6 hover:border-foreground"
                                         href={url}
                                         target="_blank"
                                         rel="noreferrer"

@@ -32,12 +32,11 @@ const UpdateUsername: React.FC = () => {
 
     return (
         <div>
-            <input type="string" value={username} onChange={handleInputChange}/>
+            <input className={"text-gray-950"} type="string" value={username} onChange={handleInputChange}/>
             <button
                 style={{padding: '0.5rem'}}
                 type="button"
-                /* eslint-disable-next-line @typescript-eslint/no-misused-promises */
-                onClick={handleButtonClick}
+                onClick={ () => { handleButtonClick } }
             >
                 {user?.username ? "Change Username" : "Set Username"}
             </button>

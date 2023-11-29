@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-    @apply bg-black text-slate-100
+    @apply bg-gradient-to-b from-[#020617] to-[#0c0a09] text-slate-100
 }
 
 @layer base {
