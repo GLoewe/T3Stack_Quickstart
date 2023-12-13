@@ -1,6 +1,8 @@
 # Create T3 App
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.  
+### My hosting: [T3Stack-Quickstart](https://t3test-indol.vercel.app)
+
 
 ## Motivation
 The T3 stack was recommended to me by a colleague. My motivation was not to develop the perfect app,  
