@@ -15,13 +15,13 @@ Follow the setup:
 - Create git repository
 
 ## Hosting
-I used [Vercel](Vercel.com) for the free hosting. (requires an account)  
+I used [Vercel](Vercel.com) for the hosting. (free but requires an account)  
 Import the repository to Vercel.  
 Before we can deploy it for the first time we have to set the Database URL
 as an environment variable in Vercel otherwise deployment will fail.
 
 ## Database
-I chose [Supabase](Supabase.com) as the database provider. (requires an account)  
+I chose [Supabase](Supabase.com) as the database provider. (free but requires an account)  
 It´s a PostgreSQL DB but any other DB also works.
 Get the connection string to your Database.  
 For Supabase its located under Settings -> Database -> Connection String (PSQL) and paste it into the .env file of the project:
@@ -52,11 +52,11 @@ Vercel automatically separates the key and value.
 Pick the Environments where the variable should be used.  
 For a quickstart just select all three (Prod, Preview, Dev) and save.  
 
-Now deploy. It should run without problems because we haven´t changed much yet.  
+Now deploy. It should run without problems because we did not change much yet.  
 Everytime we push to the main branch it automatically redeploys the app.
 
 ## Authentication
-Now we add authentication methods via [Clerk](clerk.com) (requires an account)
+Now we add authentication methods via [Clerk](clerk.com) (free but requires an account)  
 Add an application and choose your desired authentication methods like via 
 Google, Microsoft or GitHub or several other methods.  
 I chose via GitHub and email address.
@@ -69,9 +69,12 @@ Go to [Clerk Quickstart](https://clerk.com/docs/quickstarts/nextjs) and follow t
 
 Now the application has functioning auth and every component is protected against non-authorized access.
 
+## Routing
+To create another page and manage the routing, you simply have to create a new folder in the pages directory with the name that the route should have.  
+e.g. we create a user/profile page and want to access it like this: ....com/user/[userId]
+
 
 ## Learn More
-
 To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
 
 - [Documentation](https://create.t3.gg/)

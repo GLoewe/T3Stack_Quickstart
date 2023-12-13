@@ -36,7 +36,7 @@ const UpdateUsername: React.FC = () => {
             <button
                 style={{padding: '0.5rem'}}
                 type="button"
-                onClick={ () => { handleButtonClick } }
+                onClick={handleButtonClick}
             >
                 {user?.username ? "Change Username" : "Set Username"}
             </button>

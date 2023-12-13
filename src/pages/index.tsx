@@ -64,7 +64,7 @@ export default function Home() {
                             <div className="flex items-center gap-8">
                                 Hey, {user.username ? user.username : user.id}
                                 <div>
-                                    <Link href={`/user/${user.username}`}>
+                                    <Link href={`/user/${user?.username}`}>
                                         <span>{`Profile Page`}</span>
                                     </Link>
                                 </div>

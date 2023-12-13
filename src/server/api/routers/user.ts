@@ -1,21 +1,21 @@
-import { z } from "zod";
-
-import {
-    createTRPCRouter,
-    protectedProcedure,
-    publicProcedure,
-} from "~/server/api/trpc";
+import {createTRPCRouter, publicProcedure} from "~/server/api/trpc";
+import {z} from "zod";
+import {clerkClient} from "@clerk/nextjs";
+import {TRPCError} from "@trpc/server";
 
 export const userRouter = createTRPCRouter({
-    hello: publicProcedure
-        .input(z.object({ text: z.string() }))
-        .query(({ input }) => {
-            return {
-                greeting: `Hey ${input.text}`,
-            };
-        }),
+    getUserByUsername: publicProcedure.input(z.object({username: z.string()})).query(async ({input}) => {
+        const [user] = await clerkClient.users.getUserList({
+            username: [input.username],
+        });
 
-    getSecretMessage: protectedProcedure.query(() => {
-        return "you can now see this secret message!";
+        if (!user) {
+            throw new TRPCError({
+                code: "INTERNAL_SERVER_ERROR",
+                message: "User not found",
+            });
+        }
+
+        return user;
     }),
 });
