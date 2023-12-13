@@ -28,7 +28,7 @@ For Supabase its located under Settings -> Database -> Connection String (PSQL) 
 
 ![img_3.png](img_3.png)
 
-### Prisma
+## Prisma
 Prisma is an open source ORM and an additional layer for our database.  
 It helps us build and auto generate type-safe queries for Typescript.  
 It also comes with Prisma Studio which lets us view and edit our data locally in the DB.  
@@ -70,9 +70,14 @@ Go to [Clerk Quickstart](https://clerk.com/docs/quickstarts/nextjs) and follow t
 Now the application has functioning auth and every component is protected against non-authorized access.
 
 ## Routing
-To create another page and manage the routing, you simply have to create a new folder in the pages directory with the name that the route should have.  
-e.g. we create a user/profile page and want to access it like this: ....com/user/[userId]
+Adding a new page and manage its routing is simple.
+Begin by creating a new directory within the 'pages' directory, naming it after the desired route.
 
+Let's say we want to create a 'user/profile' page accessible through www.example.com/user/[userId].
+In this case, we create a 'user' directory within the 'pages' directory. 
+Within this 'user' directory, create a file named [id].tsx which contains the code for the 'user/profile' page.
+
+For instance, if the userid is "mustermann" accessing www.example.com/user/mustermann directs users to the corresponding user/profile page
 
 ## Learn More
 To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
